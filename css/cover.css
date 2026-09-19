@@ -16,21 +16,13 @@
     transition: transform 650ms ease;
 }
 
-.cover-left { left: 0; }
-.cover-right { right: 0; }
-
-.cover-left::after,
-.cover-right::after {
-    content: '';
-    position: absolute;
-    top: 8%;
-    bottom: 8%;
-    width: 1px;
-    background: rgba(227, 215, 197, 0.12);
+.cover-left {
+    left: 0;
 }
 
-.cover-left::after { right: 0; }
-.cover-right::after { left: 0; }
+.cover-right {
+    right: 0;
+}
 
 .cover-flower {
     position: absolute;
@@ -114,6 +106,15 @@
     opacity: 1;
 }
 
-body.is-opening .cover-left { transform: translateX(-101%); }
-body.is-opening .cover-right { transform: translateX(101%); }
-body.is-opening .cover-center { opacity: 0; transform: scale(0.97); }
+body.is-opening .cover-left {
+    transform: translateX(-101%);
+}
+
+body.is-opening .cover-right {
+    transform: translateX(101%);
+}
+
+body.is-opening .cover-center {
+    opacity: 0;
+    transform: scale(0.97);
+}
