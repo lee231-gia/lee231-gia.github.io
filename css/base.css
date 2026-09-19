@@ -180,7 +180,8 @@ main { overflow: hidden; }
     list-style: none;
     padding: 14px 12px 14px 20px;
     background: #151212;
-    box-shadow: 10px 12px 0 rgba(84, 18, 18, 0.36);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+    border: 1px solid rgba(238, 238, 238, 0.08);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
@@ -264,7 +265,8 @@ main { overflow: hidden; }
         gap: 4px;
         padding: 18px 22px;
         background: #151212;
-        box-shadow: 8px 10px 0 rgba(84, 18, 18, 0.3);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+        border: 1px solid rgba(238, 238, 238, 0.08);
     }
 
     .nav-links.show-menu { display: flex; }
