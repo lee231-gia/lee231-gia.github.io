@@ -1,0 +1,110 @@
+.about-intro {
+    padding: 68px 0 48px;
+}
+
+.about-intro-copy {
+    max-width: 760px;
+}
+
+.about-intro h1 {
+    margin-top: 8px;
+    max-width: 760px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--paper);
+}
+
+.about-intro p {
+    max-width: 66ch;
+    margin-top: 16px;
+    color: #d0c8c2;
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.about-body {
+    padding: 8px 0 92px;
+}
+
+.about-note-stack {
+    width: min(860px, 100%);
+    display: grid;
+    gap: 42px;
+}
+
+.about-note-stack article {
+    padding: 6px 0 6px 30px;
+    border-left: 2px solid rgba(238, 238, 238, 0.24);
+}
+
+.about-note-stack article:nth-child(2) {
+    margin-left: 42px;
+    border-left-color: var(--olive);
+}
+
+.about-note-stack article:nth-child(3) {
+    margin-left: 18px;
+    border-left-color: var(--red-light);
+}
+
+.about-note-stack h2 {
+    margin-top: 9px;
+    max-width: 650px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    font-weight: 600;
+    line-height: 1.02;
+    color: var(--paper);
+}
+
+.about-note-stack p {
+    max-width: 64ch;
+    margin-top: 12px;
+    color: #d0c8c2;
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.about-interests {
+    margin-top: 58px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(238, 238, 238, 0.13);
+}
+
+.about-interest-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 32px;
+    margin-top: 16px;
+}
+
+.about-interest-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #e2dbd5;
+    font-size: 0.94rem;
+}
+
+.interest-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border-radius: 50%;
+    background: var(--olive);
+    box-shadow: 0 0 0 3px rgba(139, 154, 70, 0.12);
+}
+
+@media (max-width: 620px) {
+    .about-intro { padding-top: 48px; }
+    .about-note-stack { gap: 34px; }
+    .about-note-stack article,
+    .about-note-stack article:nth-child(2),
+    .about-note-stack article:nth-child(3) {
+        margin-left: 0;
+        padding-left: 20px;
+    }
+}

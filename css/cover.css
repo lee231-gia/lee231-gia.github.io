@@ -1,0 +1,119 @@
+.cover-shell {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--ink);
+}
+
+.cover-panel {
+    position: absolute;
+    inset-block: 0;
+    width: 50%;
+    z-index: 1;
+    background: #090909;
+    transition: transform 650ms ease;
+}
+
+.cover-left { left: 0; }
+.cover-right { right: 0; }
+
+.cover-left::after,
+.cover-right::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+    background: rgba(227, 215, 197, 0.12);
+}
+
+.cover-left::after { right: 0; }
+.cover-right::after { left: 0; }
+
+.cover-flower {
+    position: absolute;
+    width: min(330px, 48vw);
+    left: -70px;
+    bottom: -100px;
+    z-index: 1;
+    opacity: 0.13;
+    transform: rotate(-13deg);
+    pointer-events: none;
+}
+
+.cover-center {
+    position: relative;
+    z-index: 2;
+    width: min(600px, 88vw);
+    text-align: center;
+    transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.cover-kicker {
+    color: var(--muted);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.cover-name {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 500;
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+}
+
+.cover-meta {
+    margin-top: 22px;
+    color: #c1bab4;
+    font-size: 0.9rem;
+}
+
+.cover-thread {
+    width: min(410px, 78vw);
+    height: 58px;
+    margin: 20px auto 0;
+}
+
+.cover-thread path {
+    fill: none;
+    stroke: var(--red-light);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+}
+
+.open-button {
+    margin-top: 4px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.open-button img {
+    width: 82px;
+    height: 82px;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.open-button:hover img,
+.open-button:focus-visible img {
+    transform: translateY(-5px) rotate(-4deg);
+    opacity: 1;
+}
+
+body.is-opening .cover-left { transform: translateX(-101%); }
+body.is-opening .cover-right { transform: translateX(101%); }
+body.is-opening .cover-center { opacity: 0; transform: scale(0.97); }

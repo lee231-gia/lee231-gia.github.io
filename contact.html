@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Lyzel Mae Talisic</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container navbar" aria-label="Main navigation">
+            <a class="brand" href="home.html">Lyzel Mae Talisic</a>
+            <button class="menu-toggle" type="button">Menu</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <button id="dropdownBtn" class="dropdown-btn" type="button">Works <span class="dropdown-arrow">↓</span></button>
+                    <ul id="dropdownMenu" class="dropdown-menu">
+                        <li><a href="works.html#current-project">Current Project</a></li><li><a href="works.html#past-projects">Past Projects</a></li><li><a href="works.html#web-app-development">Web App Development</a></li>
+                    </ul>
+                </li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li class="contact-nav-item">
+                    <button id="contactDropdownBtn" class="dropdown-btn contact-dropdown-btn active" type="button">Contact <span class="contact-dropdown-arrow">↓</span></button>
+                    <ul id="contactDropdownMenu" class="dropdown-menu contact-dropdown-menu">
+                        <li><a href="contact.html">Get in Touch</a></li>
+                        <li><a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener">Facebook ↗</a></li>
+                        <li><a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener">Instagram ↗</a></li>
+                        <li><a href="https://github.com/lee231-gia" target="_blank" rel="noopener">GitHub ↗</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page contact-page-editorial">
+        <div class="container contact-editorial-layout">
+            <div class="contact-heading-block contact-heading-compact">
+                <span class="mini-label">Contact</span>
+                <h1 class="contact-title">GET IN TOUCH</h1>
+                <p class="contact-copy">I’m open to learning, collaborations, small projects, and future freelance opportunities.</p>
+            </div>
+
+            <div class="contact-socials" aria-label="Social links">
+                <a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener">
+                    <span>Facebook</span><strong>lyzelmae133</strong><em>↗</em>
+                </a>
+                <a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener">
+                    <span>Instagram</span><strong>@itz133zel</strong><em>↗</em>
+                </a>
+                <a href="https://github.com/lee231-gia" target="_blank" rel="noopener">
+                    <span>GitHub</span><strong>lee231-gia</strong><em>↗</em>
+                </a>
+            </div>
+
+            <div class="contact-direct">
+                <div>
+                    <span class="mini-label">Email</span>
+                    <strong>talisiclyzel@gmail.com</strong>
+                    <button class="contact-copy-button" type="button" data-copy="talisiclyzel@gmail.com">copy</button>
+                </div>
+                <div>
+                    <span class="mini-label">Phone</span>
+                    <strong>09700833862</strong>
+                    <button class="contact-copy-button" type="button" data-copy="09700833862">copy</button>
+                </div>
+            </div>
+        </div>
+        <img class="contact-butterfly-small" src="images/butterfly.png" alt="" aria-hidden="true">
+    </main>
+
+    <div id="copyToast" class="copy-toast" role="status" aria-live="polite"></div>
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <span>© 2026 Lyzel Mae Talisic</span>
+            <span>All rights reserved.</span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

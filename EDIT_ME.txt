@@ -1,0 +1,40 @@
+LYZEL PORTFOLIO — QUICK EDIT GUIDE
+
+MAIN PAGES
+index.html         = opening screen
+home.html          = home + profile image + current project
+about.html         = personal story, learning style, interests, future goals
+works.html         = project archive
+achievements.html  = certificates and organization role
+contact.html       = social links, email, phone
+script.js          = dropdowns, archive drawer, music, copy buttons, image previews
+
+CSS FILES
+css/base.css          = colors, fonts, navbar, page intro, footer
+css/cover.css         = opening screen
+css/home.css          = home page
+css/about.css         = about page
+css/works.css         = project archive
+css/achievements.css  = achievements page
+css/contact.css       = contact page
+
+CONTACT
+Facebook: https://www.facebook.com/lyzelmae133
+Instagram: https://www.instagram.com/itz133zel
+GitHub: https://github.com/lee231-gia
+Email: talisiclyzel@gmail.com
+Phone: 09700833862
+
+MUSIC
+The hidden player looks for:
+music/light-it-up.mp3
+
+Place your own legally obtained audio file there if you want the hidden player to play the track.
+
+JAVASCRIPT CONCEPTS USED
+- document.querySelector()
+- document.querySelectorAll()
+- addEventListener()
+- classList.toggle()
+- classList.add()
+- classList.remove()

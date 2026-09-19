@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works | Lyzel Mae Talisic</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/works.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container navbar" aria-label="Main navigation">
+            <a class="brand" href="home.html">Lyzel Mae Talisic</a>
+            <button class="menu-toggle" type="button">Menu</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <button id="dropdownBtn" class="dropdown-btn active" type="button">Works <span class="dropdown-arrow">↓</span></button>
+                    <ul id="dropdownMenu" class="dropdown-menu">
+                        <li><a href="#current-project">Current Project</a></li><li><a href="#past-projects">Past Projects</a></li><li><a href="#web-app-development">Web App Development</a></li>
+                    </ul>
+                </li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li class="contact-nav-item">
+                    <button id="contactDropdownBtn" class="dropdown-btn contact-dropdown-btn" type="button">Contact <span class="contact-dropdown-arrow">↓</span></button>
+                    <ul id="contactDropdownMenu" class="dropdown-menu contact-dropdown-menu">
+                        <li><a href="contact.html">Get in Touch</a></li>
+                        <li><a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener">Facebook ↗</a></li>
+                        <li><a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener">Instagram ↗</a></li>
+                        <li><a href="https://github.com/lee231-gia" target="_blank" rel="noopener">GitHub ↗</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="works-main">
+        <section class="page-intro">
+            <div class="container works-intro-row">
+                <div>
+                    <span class="mini-label">Pull a file</span>
+                    <h1 class="page-title">Work archive</h1>
+                    <p class="page-lead">
+                        Projects, course work, and visual pieces I want to keep in one archive.
+                    </p>
+                </div>
+                <img class="archive-mark" src="images/butterfly.png" alt="" aria-hidden="true">
+            </div>
+        </section>
+
+        <section class="archive-cabinet" aria-label="Project archive">
+            <div class="container archive-cabinet-inner">
+                <div class="archive-spine" aria-hidden="true">
+                    <span>WORK</span>
+                    <span>ARCHIVE</span>
+                    <small>LYZEL / 2026</small>
+                </div>
+
+                <div class="archive-files">
+                    <button class="archive-file-tab" type="button" data-file="current-project">
+                        <span class="archive-file-no">01</span>
+                        <span class="archive-file-name">ReAccess Hub</span>
+                        <span class="archive-file-note">Current project</span>
+                        <span class="archive-file-action">pull →</span>
+                    </button>
+
+                    <button class="archive-file-tab" type="button" data-file="past-projects">
+                        <span class="archive-file-no">02</span>
+                        <span class="archive-file-name">Past Projects</span>
+                        <span class="archive-file-note">3 papers inside</span>
+                        <span class="archive-file-action">pull →</span>
+                    </button>
+
+                    <button class="archive-file-tab" type="button" data-file="web-app-development">
+                        <span class="archive-file-no">03</span>
+                        <span class="archive-file-name">Web App Development</span>
+                        <span class="archive-file-note">Course work</span>
+                        <span class="archive-file-action">pull →</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="archiveBackdrop" class="archive-backdrop" aria-hidden="true"></div>
+
+    <aside id="archiveDrawer" class="archive-drawer" aria-hidden="true" aria-label="Selected project file">
+        <div class="archive-drawer-head">
+            <span>Project file</span>
+            <div class="drawer-head-actions">
+                <button id="archiveDrawerFull" class="archive-drawer-full" type="button">full view ↗</button>
+                <button id="archiveDrawerClose" class="archive-drawer-close" type="button" aria-label="Close project file">close ×</button>
+            </div>
+        </div>
+
+        <div class="archive-drawer-body">
+            <article class="archive-file" data-project="current-project">
+                <div class="archive-file-code">FILE 01 / CURRENT</div>
+                <div class="project-state">Software Engineering</div>
+                <h2 class="archive-project-title">ReAccess Hub</h2>
+                <p class="archive-project-lead">
+                    ReAccess Hub is our Software Engineering team project — a school website/system for Tangub City Global College.
+                    It is still in progress and focuses on Office 365 / Teams-related service requests for students and faculty.
+                </p>
+
+                <div class="archive-preview archive-preview-image">
+                    <span class="in-progress-stamp">IN PROGRESS</span>
+                    <button class="work-image-button" type="button" data-full-preview="images/reaccess-hub.png" data-preview-title="ReAccess Hub — in progress">
+                        <img src="images/reaccess-hub.png" alt="ReAccess Hub website screenshot">
+                        <span class="full-preview-label">view image full ↗</span>
+                    </button>
+                </div>
+
+                <dl class="archive-meta">
+                    <div><dt>COURSE</dt><dd>Software Engineering</dd></div>
+                    <div><dt>TYPE</dt><dd>School website/system</dd></div>
+                    <div><dt>STATUS</dt><dd>Team project · In progress</dd></div>
+                </dl>
+            </article>
+
+            <article class="archive-file" data-project="past-projects">
+                <div class="archive-file-code">FILE 02 / PAST PROJECTS</div>
+                <div class="project-state">Older works</div>
+                <h2 class="archive-project-title">Past Projects</h2>
+                <p class="archive-project-lead">
+                    Earlier builds and visual work that still belong in my archive.
+                </p>
+
+                <div class="work-paper-stack past-paper-stack">
+                    <article class="work-paper project-paper project-paper-cfg">
+                        <span class="work-paper-no">PAPER 01</span>
+                        <h3>Cursed CFG Game</h3>
+                        <button class="work-image-button project-shot" type="button" data-full-preview="images/cursed-cfg-game.png" data-preview-title="Cursed CFG Game">
+                            <img src="images/cursed-cfg-game.png" alt="Cursed CFG Game homepage screenshot">
+                        </button>
+                        <p>An educational web game built around context-free grammar activities, derivations, and parse-tree practice.</p>
+                        <a class="archive-live-link" href="https://lee231-gia.github.io/curse-cfg-game/" target="_blank" rel="noopener">Open live project ↗</a>
+                    </article>
+
+                    <article class="work-paper project-paper project-paper-sound">
+                        <span class="work-paper-no">PAPER 02</span>
+                        <h3>Sound Scanner</h3>
+                        <button class="work-image-button project-shot" type="button" data-full-preview="images/sound-scanner.png" data-preview-title="Sound Scanner">
+                            <img src="images/sound-scanner.png" alt="Sound Scanner homepage screenshot">
+                        </button>
+                        <p>An interactive audio-to-binary web activity with a scanner-style interface.</p>
+                        <a class="archive-live-link" href="https://lee231-gia.github.io/sound-scanner/" target="_blank" rel="noopener">Open live project ↗</a>
+                    </article>
+
+                    <article class="work-paper logo-variants-paper">
+                        <span class="work-paper-no">PAPER 03</span>
+                        <h3>LYZ HAVEN</h3>
+                        <p>Personal logo study in three background versions.</p>
+                        <div class="logo-variant-grid">
+                            <button class="work-image-button logo-variant" type="button" data-full-preview="images/lyz-haven-black.png" data-preview-title="LYZ HAVEN — black background">
+                                <img src="images/lyz-haven-black.png" alt="LYZ HAVEN logo on black background">
+                                <span class="variant-label">black</span>
+                            </button>
+                            <button class="work-image-button logo-variant" type="button" data-full-preview="images/lyz-haven-white.png" data-preview-title="LYZ HAVEN — white background">
+                                <img src="images/lyz-haven-white.png" alt="LYZ HAVEN logo on white background">
+                                <span class="variant-label">white</span>
+                            </button>
+                            <button class="work-image-button logo-variant" type="button" data-full-preview="images/lyz-haven-transparent.png" data-preview-title="LYZ HAVEN — transparent background">
+                                <img src="images/lyz-haven-transparent.png" alt="LYZ HAVEN transparent logo">
+                                <span class="variant-label">transparent</span>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </article>
+
+            <article class="archive-file" data-project="web-app-development">
+                <div class="archive-file-code">FILE 03 / WEB APP DEVELOPMENT</div>
+                <div class="project-state">Course work</div>
+                <h2 class="archive-project-title">Web App Development</h2>
+                <p class="archive-project-lead">
+                    Course activities and portfolio work I am collecting as I continue learning.
+                </p>
+
+                <div class="work-paper-stack webapp-paper-stack">
+                    <article class="work-paper">
+                        <span class="work-paper-no">PAPER 01</span>
+                        <h3>This Portfolio</h3>
+                        <p>
+                            My multi-page portfolio activity, built with separate HTML, CSS, and JavaScript files so I can study and explain each part clearly.
+                        </p>
+                        <a class="archive-live-link" href="index.html">Open this portfolio →</a>
+                    </article>
+
+                    <article class="work-paper work-paper-empty">
+                        <span class="work-paper-no">PAPER 02</span>
+                        <h3>COMING SOON</h3>
+                    </article>
+                </div>
+            </article>
+        </div>
+    </aside>
+
+    <dialog id="workPreviewDialog" class="certificate-dialog work-preview-dialog">
+        <div class="certificate-dialog-bar">
+            <span id="workPreviewTitle">Work preview</span>
+            <button id="workPreviewClose" type="button">close ×</button>
+        </div>
+        <img id="workPreviewImage" src="" alt="Selected work preview">
+    </dialog>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <span>© 2026 Lyzel Mae Talisic</span>
+            <span>All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

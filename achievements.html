@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Lyzel Mae Talisic</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container navbar" aria-label="Main navigation">
+            <a class="brand" href="home.html">Lyzel Mae Talisic</a>
+            <button class="menu-toggle" type="button">Menu</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <button id="dropdownBtn" class="dropdown-btn" type="button">Works <span class="dropdown-arrow">↓</span></button>
+                    <ul id="dropdownMenu" class="dropdown-menu">
+                        <li><a href="works.html#current-project">Current Project</a></li><li><a href="works.html#past-projects">Past Projects</a></li><li><a href="works.html#web-app-development">Web App Development</a></li>
+                    </ul>
+                </li>
+                <li><a class="active" href="achievements.html">Achievements</a></li>
+                <li class="contact-nav-item">
+                    <button id="contactDropdownBtn" class="dropdown-btn contact-dropdown-btn" type="button">Contact <span class="contact-dropdown-arrow">↓</span></button>
+                    <ul id="contactDropdownMenu" class="dropdown-menu contact-dropdown-menu">
+                        <li><a href="contact.html">Get in Touch</a></li>
+                        <li><a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener">Facebook ↗</a></li>
+                        <li><a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener">Instagram ↗</a></li>
+                        <li><a href="https://github.com/lee231-gia" target="_blank" rel="noopener">GitHub ↗</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-intro">
+            <div class="container">
+                <span class="mini-label">Pieces I want to keep</span>
+                <h1 class="page-title">Achievements</h1>
+                <p class="page-lead">
+                    A small wall of certificates, activities, and roles that became part of my college experience.
+                </p>
+            </div>
+        </section>
+
+        <section class="achievement-stage">
+            <div class="container">
+                <div class="certificate-wall">
+                    <button class="certificate-shot" type="button" data-certificate="images/certificate-aug24.png" data-title="IT Seminar — August 24, 2026">
+                        <img src="images/certificate-aug24.png" alt="Certificate of participation for the August 24, 2026 IT seminar">
+                        <div class="certificate-caption">
+                            <span class="certificate-date">Aug 24, 2026</span>
+                            <strong>IT Seminar — Ecommerce MVP + GSSO + Analytics with Django & Nxt</strong>
+                            <span>Certificate of Participation · Tangub City Global College</span>
+                        </div>
+                    </button>
+
+                    <button class="certificate-shot" type="button" data-certificate="images/certificate-aug28.png" data-title="IT Seminar — August 28, 2026">
+                        <img src="images/certificate-aug28.png" alt="Certificate of participation for the August 28, 2026 IT seminar">
+                        <div class="certificate-caption">
+                            <span class="certificate-date">Aug 28, 2026</span>
+                            <strong>IT Seminar — You Don’t Need the “Perfect Dev Path”</strong>
+                            <span>Certificate of Participation · Tangub City Global College</span>
+                        </div>
+                    </button>
+                </div>
+
+                <article class="achievement-note">
+                    <span class="mini-label">Organization</span>
+                    <h2>Treasurer — JPEG.com</h2>
+                    <p>
+                        Junior Programming Enthusiasts Group of Computer Students.
+                        One of the roles I’m balancing alongside my Computer Science coursework.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="certificateDialog" class="certificate-dialog">
+        <div class="certificate-dialog-bar">
+            <span id="certificateDialogTitle">Certificate</span>
+            <button id="certificateDialogClose" class="dialog-close" type="button">close ×</button>
+        </div>
+        <img id="certificateDialogImage" src="" alt="Selected certificate">
+    </dialog>
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <span>© 2026 Lyzel Mae Talisic</span>
+            <span>All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

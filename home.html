@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home | Lyzel Mae Talisic</title>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/home.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="site-header">
+<nav aria-label="Main navigation" class="container navbar">
+<a class="brand" href="home.html">Lyzel Mae Talisic</a>
+<button class="menu-toggle" type="button">Menu</button>
+<ul class="nav-links">
+<li><a class="active" href="home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li>
+<button class="dropdown-btn" id="dropdownBtn" type="button">Works <span class="dropdown-arrow">↓</span></button>
+<ul class="dropdown-menu" id="dropdownMenu">
+<li><a href="works.html#current-project">Current Project</a></li><li><a href="works.html#past-projects">Past Projects</a></li><li><a href="works.html#web-app-development">Web App Development</a></li>
+</ul>
+</li>
+<li><a href="achievements.html">Achievements</a></li>
+<li class="contact-nav-item">
+<button class="dropdown-btn contact-dropdown-btn" id="contactDropdownBtn" type="button">Contact <span class="contact-dropdown-arrow">↓</span></button>
+<ul class="dropdown-menu contact-dropdown-menu" id="contactDropdownMenu">
+<li><a href="contact.html">Get in Touch</a></li>
+<li><a href="https://www.facebook.com/lyzelmae133" rel="noopener" target="_blank">Facebook ↗</a></li>
+<li><a href="https://www.instagram.com/itz133zel" rel="noopener" target="_blank">Instagram ↗</a></li>
+<li><a href="https://github.com/lee231-gia" rel="noopener" target="_blank">GitHub ↗</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="home-editorial container">
+<div class="home-name-field">
+<span class="mini-label home-label">Home / 2026</span>
+<h1 class="hero-name home-editorial-name">
+<span>LYZEL MAE</span>
+<span>TALISIC</span>
+</h1>
+<div class="hero-meta home-meta-row">
+<span>BSCS — 3</span>
+<span>Tangub City Global College</span>
+<span>open to learning &amp; freelancing</span>
+</div>
+</div>
+<div class="home-portrait-overlap">
+<div class="portrait-paper home-portrait-paper">
+<img alt="Portrait of Lyzel Mae Talisic" src="images/portrait.png"/>
+</div>
+<img alt="" aria-hidden="true" class="hero-flower" src="images/spider-lily.png"/>
+<button aria-label="Open hidden music player" class="music-trigger home-music-trigger" id="musicTrigger" type="button">
+<img alt="Small butterfly seal" src="images/butterfly.png"/>
+</button>
+</div>
+<div class="home-intro-flow"><p>I’m a third-year Computer Science student who likes turning ideas into pages, apps, and small projects I can actually use.</p><p>Right now, I’m exploring web development, creative technology, and practical ways to work with AI while developing my own style.</p><div class="hero-links"><a class="text-link" href="works.html#current-project">See what I’m building <span>↗</span></a><a class="text-link" href="about.html">Read my story <span>→</span></a></div></div>
+</section>
+<div aria-hidden="true" class="container home-section-break"><span></span></div>
+<section class="home-afterword container">
+<article class="home-focus-piece">
+<span class="mini-label">Current focus</span>
+<h2>ReAccess Hub</h2>
+<p>
+                    A Software Engineering school website/system that my team is currently building for TCGC.
+                    Still in progress, still evolving.
+                </p>
+<a class="mosaic-link" href="works.html#current-project">open project file →</a>
+</article>
+
+</section>
+</main>
+<aside aria-live="polite" class="music-secret" id="musicSecret">
+<div class="music-secret-copy">
+<small>Hidden track</small>
+<strong>Light It Up — Moss Kena</strong>
+<span class="music-status" id="musicStatus">ready</span>
+</div>
+<div class="music-actions">
+<button class="music-play" id="musicPlayPause" type="button">play</button>
+<button class="music-close" id="musicClose" type="button">close</button>
+</div>
+<audio id="musicPlayer" preload="metadata">
+<source src="music/light-it-up.mp3" type="audio/mpeg"/>
+</audio>
+</aside>
+<footer class="site-footer">
+<div class="container footer-row">
+<span>© 2026 Lyzel Mae Talisic</span>
+<span>All rights reserved.</span>
+</div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
