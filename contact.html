@@ -35,40 +35,41 @@
         </nav>
     </header>
 
-    <main class="contact-page contact-page-editorial">
-        <div class="container contact-editorial-layout">
-            <div class="contact-heading-block contact-heading-compact">
+    <main class="contact-page contact-page-simple">
+        <div class="container">
+            <div class="contact-heading-block">
                 <span class="mini-label">Contact</span>
                 <h1 class="contact-title">GET IN TOUCH</h1>
-                <p class="contact-copy">I’m open to learning, collaborations, small projects, and future freelance opportunities.</p>
+                <p class="contact-copy">For projects, collaborations, or just to say hi.</p>
             </div>
 
-            <div class="contact-socials" aria-label="Social links">
-                <a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener">
-                    <span>Facebook</span><strong>lyzelmae133</strong><em>↗</em>
-                </a>
-                <a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener">
-                    <span>Instagram</span><strong>@itz133zel</strong><em>↗</em>
-                </a>
-                <a href="https://github.com/lee231-gia" target="_blank" rel="noopener">
-                    <span>GitHub</span><strong>lee231-gia</strong><em>↗</em>
-                </a>
-            </div>
+            <div class="contact-simple-grid">
+                <section class="contact-group" aria-labelledby="socials-label">
+                    <span class="mini-label" id="socials-label">Socials</span>
+                    <div class="contact-link-list">
+                        <a href="https://www.facebook.com/lyzelmae133" target="_blank" rel="noopener"><span>Facebook</span><span>↗</span></a>
+                        <a href="https://www.instagram.com/itz133zel" target="_blank" rel="noopener"><span>Instagram</span><span>↗</span></a>
+                        <a href="https://github.com/lee231-gia" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
+                    </div>
+                </section>
 
-            <div class="contact-direct">
-                <div>
-                    <span class="mini-label">Email</span>
-                    <strong>talisiclyzel@gmail.com</strong>
-                    <button class="contact-copy-button" type="button" data-copy="talisiclyzel@gmail.com">copy</button>
-                </div>
-                <div>
-                    <span class="mini-label">Phone</span>
-                    <strong>09700833862</strong>
-                    <button class="contact-copy-button" type="button" data-copy="09700833862">copy</button>
-                </div>
+                <section class="contact-group" aria-labelledby="direct-label">
+                    <span class="mini-label" id="direct-label">Direct</span>
+                    <div class="contact-direct-list">
+                        <div class="contact-detail-row">
+                            <span>Email</span>
+                            <strong>talisiclyzel@gmail.com</strong>
+                            <button class="contact-copy-button" type="button" data-copy="talisiclyzel@gmail.com">Copy</button>
+                        </div>
+                        <div class="contact-detail-row">
+                            <span>Phone</span>
+                            <strong>09700833862</strong>
+                            <button class="contact-copy-button" type="button" data-copy="09700833862">Copy</button>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        <img class="contact-butterfly-small" src="images/butterfly.png" alt="" aria-hidden="true">
     </main>
 
     <div id="copyToast" class="copy-toast" role="status" aria-live="polite"></div>

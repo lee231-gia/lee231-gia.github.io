@@ -39,13 +39,12 @@
     border-left: 2px solid rgba(238, 238, 238, 0.24);
 }
 
-.about-note-stack article:nth-child(2) {
-    margin-left: 42px;
+.about-note-stack article:first-child {
     border-left-color: var(--olive);
 }
 
-.about-note-stack article:nth-child(3) {
-    margin-left: 18px;
+.about-note-stack article:nth-child(2) {
+    margin-left: 32px;
     border-left-color: var(--red-light);
 }
 
@@ -73,6 +72,11 @@
     border-top: 1px solid rgba(238, 238, 238, 0.13);
 }
 
+.about-interests .mini-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 .about-interest-list {
     list-style: none;
     display: flex;
@@ -86,7 +90,7 @@
     align-items: center;
     gap: 10px;
     color: #e2dbd5;
-    font-size: 0.94rem;
+    font-size: 1.08rem;
 }
 
 .interest-dot {
@@ -102,8 +106,7 @@
     .about-intro { padding-top: 48px; }
     .about-note-stack { gap: 34px; }
     .about-note-stack article,
-    .about-note-stack article:nth-child(2),
-    .about-note-stack article:nth-child(3) {
+    .about-note-stack article:nth-child(2) {
         margin-left: 0;
         padding-left: 20px;
     }

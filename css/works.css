@@ -625,12 +625,12 @@
 .logo-variant-grid { gap: 18px; }
 
 .logo-variant {
-    border: 5px solid #2c2724;
-    background: #2c2724;
+    border: 1px solid rgba(84, 18, 18, 0.2);
+    background: #e7e1da;
     padding: 8px;
 }
 
-.logo-variant img { border: 1px solid rgba(238, 238, 238, 0.2); }
+.logo-variant img { border: 0; }
 
 .work-paper-empty {
     display: grid;
