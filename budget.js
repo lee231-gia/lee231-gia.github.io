@@ -1,9 +1,9 @@
 const limitInput = document.querySelector('#budgetLimit');
-const budgetMonthInput = document.querySelector('#budgetMonth');
 const budgetAction = document.querySelector('#budgetAction');
 const budgetCancel = document.querySelector('#budgetCancel');
 const budgetStatus = document.querySelector('#budgetStatus');
-const filterMonthInput = document.querySelector('#expenseMonth');
+const monthFilter = document.querySelector('#expenseMonth');
+const dayFilter = document.querySelector('#expenseDay');
 const form = document.querySelector('#expenseForm');
 const nameInput = document.querySelector('#expenseName');
 const amountInput = document.querySelector('#expenseAmount');
@@ -14,73 +14,76 @@ const remainingTotal = document.querySelector('#remainingTotal');
 const expenseCount = document.querySelector('#expenseCount');
 const emptyExpenses = document.querySelector('#emptyExpenses');
 const money = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' });
-const monthNow = new Date();
-const currentMonth = `${monthNow.getFullYear()}-${String(monthNow.getMonth() + 1).padStart(2, '0')}`;
-const budgetStorageKey = 'lyzel-budget-monthly-budgets';
+const today = new Date();
+const currentMonth = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
 
-function readStoredJson(key, fallback) {
+function readExpenses() {
     try {
-        const stored = JSON.parse(localStorage.getItem(key));
-        return stored ?? fallback;
+        const stored = JSON.parse(localStorage.getItem('lyzel-budget-expenses') || '[]');
+        return Array.isArray(stored) ? stored : [];
     } catch {
-        return fallback;
+        return [];
     }
 }
 
-let expenses = readStoredJson('lyzel-budget-expenses', []);
-let budgets = readStoredJson(budgetStorageKey, null);
-if (!budgets || typeof budgets !== 'object' || Array.isArray(budgets)) {
-    const oldLimit = Number(localStorage.getItem('lyzel-budget-limit'));
-    budgets = oldLimit > 0 ? { [currentMonth]: oldLimit } : {};
-    localStorage.setItem(budgetStorageKey, JSON.stringify(budgets));
-}
-let editingBudget = false;
+let expenses = readExpenses();
+let monthlyBudget = Number(localStorage.getItem('lyzel-budget-limit')) || 0;
+let editingBudget = monthlyBudget <= 0;
+limitInput.value = monthlyBudget > 0 ? monthlyBudget : '';
+limitInput.disabled = !editingBudget;
+monthFilter.value = currentMonth;
+dateInput.value = `${currentMonth}-${String(today.getDate()).padStart(2, '0')}`;
 
-budgetMonthInput.value = currentMonth;
-filterMonthInput.value = currentMonth;
-dateInput.value = `${currentMonth}-${String(monthNow.getDate()).padStart(2, '0')}`;
-
-function selectedMonth() {
-    return budgetMonthInput.value || currentMonth;
+function monthExpenses() {
+    return expenses.filter((expense) => expense.date?.slice(0, 7) === monthFilter.value);
 }
 
-function selectedMonthExpenses() {
-    const month = selectedMonth();
-    return expenses.filter((expense) => expense.date?.slice(0, 7) === month);
-}
-
-function updateBudgetControl() {
-    const hasBudget = Number(budgets[selectedMonth()]) > 0;
-    if (!editingBudget) limitInput.value = hasBudget ? budgets[selectedMonth()] : '';
-    limitInput.disabled = !editingBudget;
-    budgetCancel.hidden = !editingBudget;
-    budgetAction.textContent = editingBudget
-        ? (hasBudget ? 'Confirm & save' : 'Save budget')
-        : (hasBudget ? 'Edit budget' : 'Add budget');
-    budgetStatus.textContent = hasBudget && !editingBudget
-        ? `Budget saved for ${formatMonth(selectedMonth())}. Click Edit budget to change it.`
-        : '';
+function visibleExpenses() {
+    return monthExpenses().filter((expense) => !dayFilter.value || expense.date?.slice(8, 10) === dayFilter.value);
 }
 
 function formatMonth(month) {
-    if (!month) return '';
+    if (!month) return 'the selected month';
     return new Date(`${month}-01T00:00:00`).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+}
+
+function updateDays() {
+    const selectedDay = dayFilter.value;
+    const [year, month] = (monthFilter.value || currentMonth).split('-').map(Number);
+    const daysInMonth = new Date(year, month, 0).getDate();
+    dayFilter.replaceChildren(new Option('All days', ''));
+    for (let day = 1; day <= daysInMonth; day += 1) {
+        dayFilter.add(new Option(String(day), String(day).padStart(2, '0')));
+    }
+    if ([...dayFilter.options].some((option) => option.value === selectedDay)) dayFilter.value = selectedDay;
+}
+
+function updateBudgetControls() {
+    limitInput.disabled = !editingBudget;
+    budgetCancel.hidden = !editingBudget || monthlyBudget <= 0;
+    budgetAction.textContent = editingBudget
+        ? (monthlyBudget > 0 ? 'Confirm & save' : 'Save budget')
+        : 'Edit budget';
+    budgetStatus.textContent = !editingBudget && monthlyBudget > 0
+        ? 'Budget saved. Choose Edit budget to change it.'
+        : '';
 }
 
 function renderExpenses() {
     expenseList.replaceChildren();
-    const visibleExpenses = selectedMonthExpenses();
-    const spent = visibleExpenses.reduce((sum, expense) => sum + Number(expense.amount || 0), 0);
-    const limit = Number(budgets[selectedMonth()]) || 0;
+    const allMonthExpenses = monthExpenses();
+    const shownExpenses = visibleExpenses();
+    const spent = allMonthExpenses.reduce((sum, expense) => sum + Number(expense.amount || 0), 0);
 
     spentTotal.textContent = money.format(spent);
-    remainingTotal.textContent = limit > 0 ? money.format(limit - spent) : 'Set a budget';
-    remainingTotal.closest('.summary-stat').classList.toggle('over-budget', limit > 0 && spent > limit);
-    expenseCount.textContent = `${visibleExpenses.length} ${visibleExpenses.length === 1 ? 'entry' : 'entries'}`;
-    emptyExpenses.hidden = visibleExpenses.length > 0;
-    emptyExpenses.textContent = `No expenses for ${formatMonth(selectedMonth())}. Add one above to get started.`;
+    remainingTotal.textContent = monthlyBudget > 0 ? money.format(monthlyBudget - spent) : 'Set a budget';
+    remainingTotal.closest('.summary-stat').classList.toggle('over-budget', monthlyBudget > 0 && spent > monthlyBudget);
+    expenseCount.textContent = `${shownExpenses.length} ${shownExpenses.length === 1 ? 'entry' : 'entries'}`;
+    emptyExpenses.hidden = shownExpenses.length > 0;
+    const dayText = dayFilter.value ? ` on day ${Number(dayFilter.value)}` : '';
+    emptyExpenses.textContent = `No expenses for ${formatMonth(monthFilter.value)}${dayText}. Add one above to get started.`;
 
-    [...visibleExpenses].sort((a, b) => b.date.localeCompare(a.date)).forEach((expense) => {
+    [...shownExpenses].sort((a, b) => b.date.localeCompare(a.date)).forEach((expense) => {
         const row = document.createElement('li');
         row.className = 'expense-row';
         const detail = document.createElement('span');
@@ -108,59 +111,48 @@ function renderExpenses() {
     });
 }
 
-function render() {
-    updateBudgetControl();
-    renderExpenses();
-}
-
 budgetAction.addEventListener('click', () => {
     if (!editingBudget) {
         editingBudget = true;
-        budgetStatus.textContent = '';
-        updateBudgetControl();
+        limitInput.value = monthlyBudget;
+        updateBudgetControls();
         limitInput.focus();
         return;
     }
 
-    if (!limitInput.reportValidity() || Number(limitInput.value) <= 0) {
-        limitInput.setCustomValidity(Number(limitInput.value) > 0 ? '' : 'Enter a budget greater than zero.');
+    if (!limitInput.reportValidity()) return;
+    limitInput.setCustomValidity('');
+    const nextBudget = Number(limitInput.value);
+    if (nextBudget <= 0) {
+        limitInput.setCustomValidity('Enter a monthly budget greater than zero.');
         limitInput.reportValidity();
         return;
     }
+    if (!window.confirm(`Save a monthly budget of ${money.format(nextBudget)}?`)) return;
 
-    limitInput.setCustomValidity('');
-    const amount = Number(limitInput.value);
-    const month = selectedMonth();
-    if (!window.confirm(`Save a monthly budget of ${money.format(amount)} for ${formatMonth(month)}?`)) return;
-
-    budgets[month] = amount;
-    localStorage.setItem(budgetStorageKey, JSON.stringify(budgets));
-    localStorage.setItem('lyzel-budget-limit', String(amount));
+    monthlyBudget = nextBudget;
+    localStorage.setItem('lyzel-budget-limit', String(monthlyBudget));
     editingBudget = false;
-    render();
-    budgetStatus.textContent = `Budget confirmed and saved for ${formatMonth(month)}.`;
+    updateBudgetControls();
+    budgetStatus.textContent = 'Budget confirmed and saved.';
+    renderExpenses();
 });
 
 budgetCancel.addEventListener('click', () => {
     editingBudget = false;
     limitInput.setCustomValidity('');
-    render();
+    limitInput.value = monthlyBudget;
+    updateBudgetControls();
 });
 
-function changeSelectedMonth(month) {
-    if (!month) return;
-    editingBudget = false;
-    budgetMonthInput.value = month;
-    filterMonthInput.value = month;
-    render();
-}
-
-budgetMonthInput.addEventListener('change', () => changeSelectedMonth(budgetMonthInput.value));
-filterMonthInput.addEventListener('change', () => changeSelectedMonth(filterMonthInput.value));
+monthFilter.addEventListener('change', () => {
+    updateDays();
+    renderExpenses();
+});
+dayFilter.addEventListener('change', renderExpenses);
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const expenseMonth = dateInput.value.slice(0, 7);
     expenses.push({
         id: crypto.randomUUID(),
         name: nameInput.value.trim(),
@@ -168,10 +160,15 @@ form.addEventListener('submit', (event) => {
         date: dateInput.value
     });
     localStorage.setItem('lyzel-budget-expenses', JSON.stringify(expenses));
-    changeSelectedMonth(expenseMonth);
+    monthFilter.value = dateInput.value.slice(0, 7);
+    updateDays();
+    dayFilter.value = dateInput.value.slice(8, 10);
+    renderExpenses();
     form.reset();
-    dateInput.value = `${currentMonth}-${String(monthNow.getDate()).padStart(2, '0')}`;
+    dateInput.value = `${currentMonth}-${String(today.getDate()).padStart(2, '0')}`;
     nameInput.focus();
 });
 
-render();
+updateDays();
+updateBudgetControls();
+renderExpenses();
