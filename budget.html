@@ -17,12 +17,19 @@
     <main class="budget-main container">
         <span class="mini-label">A small personal tool</span>
         <h1 class="page-title">Budget tracker</h1>
-        <p class="budget-lead">Set a monthly budget and keep a simple list of your spending. Your entries stay saved in this browser.</p>
+        <p class="budget-lead">Set a budget for each month and keep a simple list of your spending. Your entries stay saved in this browser.</p>
 
         <section class="budget-summary" aria-label="Monthly budget summary">
-            <label class="budget-setting">Monthly budget
-                <span class="money-input"><span>₱</span><input id="budgetLimit" type="number" min="0" step="0.01" placeholder="0.00" aria-label="Monthly budget amount"></span>
-            </label>
+            <div class="budget-setting">
+                <label for="budgetMonth">Budget month</label>
+                <input id="budgetMonth" class="month-input" type="month" aria-label="Select budget month">
+                <div class="budget-control-row">
+                    <label class="money-input" for="budgetLimit"><span>₱</span><input id="budgetLimit" type="number" min="0.01" step="0.01" placeholder="0.00" aria-label="Monthly budget amount" disabled required></label>
+                    <button id="budgetAction" class="budget-action" type="button">Add budget</button>
+                    <button id="budgetCancel" class="budget-cancel" type="button" hidden>Cancel</button>
+                </div>
+                <span id="budgetStatus" class="budget-status" aria-live="polite"></span>
+            </div>
             <div class="summary-stat"><span>Spent</span><strong id="spentTotal">₱0.00</strong></div>
             <div class="summary-stat"><span>Remaining</span><strong id="remainingTotal">₱0.00</strong></div>
         </section>
@@ -38,7 +45,7 @@
         </section>
 
         <section class="budget-card expenses-card">
-            <div class="expenses-heading"><h2>Expenses</h2><span id="expenseCount">0 entries</span></div>
+            <div class="expenses-heading"><h2>Expenses</h2><label class="filter-label" for="expenseMonth">Filter by month <input id="expenseMonth" type="month"></label><span id="expenseCount">0 entries</span></div>
             <ul id="expenseList" class="expense-list"></ul>
             <p id="emptyExpenses" class="empty-expenses">No expenses yet. Add one above to get started.</p>
         </section>
