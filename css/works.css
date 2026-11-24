@@ -121,6 +121,9 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 200ms ease, visibility 200ms ease;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
 }
 
 .archive-backdrop.show {
