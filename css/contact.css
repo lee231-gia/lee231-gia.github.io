@@ -205,9 +205,19 @@
     background: var(--paper-warm);
 }
 
+.contact-message-submit button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
 .contact-message-submit span {
     color: var(--muted);
     font-size: 0.75rem;
+}
+
+.contact-form-status {
+    color: var(--olive);
+    font-size: 0.85rem;
 }
 
 @media (max-width: 760px) {

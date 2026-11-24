@@ -17,6 +17,8 @@ const messageTopics = [
 
 export default function ContactPage() {
   const [message, setMessage] = useState('');
+  const [formStatus, setFormStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [topic, setTopic] = useState(messageTopics[0]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,15 +34,41 @@ export default function ContactPage() {
     window.setTimeout(() => setMessage(''), 1600);
   }
 
-  function sendMessage(event) {
+  async function sendMessage(event) {
     event.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus('Sending your message…');
 
-    const subject = encodeURIComponent(`${topic} — Portfolio message`);
-    const body = encodeURIComponent(
-      `From: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${messageBody}`,
-    );
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/talisiclyzel@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          topic,
+          message: messageBody,
+          _subject: `${topic} — Portfolio message`,
+        }),
+      });
+      const result = await response.json();
 
-    window.location.href = `mailto:talisiclyzel@gmail.com?subject=${subject}&body=${body}`;
+      if (!response.ok || result.success === false || result.success === 'false') {
+        throw new Error(result.message || 'Message could not be sent.');
+      }
+
+      setFormStatus('Message submitted. Thank you!');
+      setName('');
+      setEmail('');
+      setMessageBody('');
+    } catch {
+      setFormStatus('Your message could not be sent. Please try again in a moment.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -87,7 +115,7 @@ export default function ContactPage() {
             <form className="contact-message-form" onSubmit={sendMessage}>
               <label>
                 What is this about?
-                <select value={topic} onChange={(event) => setTopic(event.target.value)}>
+                <select name="topic" value={topic} onChange={(event) => setTopic(event.target.value)} disabled={isSubmitting}>
                   {messageTopics.map((messageTopic) => (
                     <option key={messageTopic} value={messageTopic}>{messageTopic}</option>
                   ))}
@@ -97,23 +125,24 @@ export default function ContactPage() {
               <div className="contact-message-fields">
                 <label>
                   Your name
-                  <input required maxLength="80" value={name} onChange={(event) => setName(event.target.value)} />
+                  <input name="name" required maxLength="80" value={name} onChange={(event) => setName(event.target.value)} disabled={isSubmitting} />
                 </label>
                 <label>
                   Your email
-                  <input required type="email" maxLength="120" value={email} onChange={(event) => setEmail(event.target.value)} />
+                  <input name="email" required type="email" maxLength="120" value={email} onChange={(event) => setEmail(event.target.value)} disabled={isSubmitting} />
                 </label>
               </div>
 
               <label>
                 Message
-                <textarea required rows="6" maxLength="3000" value={messageBody} onChange={(event) => setMessageBody(event.target.value)} placeholder="Write your suggestion or comment here…" />
+                <textarea name="message" required rows="6" maxLength="3000" value={messageBody} onChange={(event) => setMessageBody(event.target.value)} placeholder="Write your suggestion or comment here…" disabled={isSubmitting} />
               </label>
 
               <div className="contact-message-submit">
-                <button type="submit">Continue to email ↗</button>
-                <span>Your email app will open with your message ready to send.</span>
+                <button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Send message ↗'}</button>
+                <span>Messages are emailed to Lyzel via FormSubmit, which retains submissions for up to 30 days.</span>
               </div>
+              {formStatus && <p className="contact-form-status" role="status" aria-live="polite">{formStatus}</p>}
             </form>
           </section>
         </div>
